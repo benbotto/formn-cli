@@ -1,0 +1,27 @@
+{
+  "name": "formn-cli",
+  "version": "1.0.0",
+  "description": "Command-line interface for formn.",
+  "main": "dist/bin/formn.js",
+  "types": "dist/index.d.ts",
+  "author": "Ben Botto",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "bin": {
+    "formn": "dist/bin/formn.js"
+  },
+  "dependencies": {
+    "@types/node": "~10.12.18",
+    "@types/yargs": "~12.0.5",
+    "formn": "~4.0.0",
+    "typescript": "~3.2.2",
+    "yargs": "~12.0.5"
+  },
+  "devDependencies": {
+    "ts-node": "~7.0.1"
+  }
+}
