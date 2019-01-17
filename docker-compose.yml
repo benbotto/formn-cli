@@ -6,9 +6,21 @@ services:
       - .:/home/node/dev
     container_name: formn-cli-dev
     ports:
-      - "9229:9229"
+      - "9230:9229"
     stdin_open: true
     tty: true
     environment:
       - SHELL=/bin/bash
+
+  db:
+    image: percona:5.7
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    container_name: formn-cli-db
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=formn-password
+      - MYSQL_DATABASE=formn_cli_test_db
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
