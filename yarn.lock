@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@types/mysql2@github:types/mysql2":
+"@types/mysql2@types/mysql2":
   version "1.0.0"
   resolved "https://codeload.github.com/types/mysql2/tar.gz/e2be194d8db7a1a64612e5f645d5cad8223328ab"
   dependencies:
