@@ -1,0 +1,9 @@
+[
+  {
+    "host":"formn-cli-db",
+    "user":"root",
+    "password":"formn-password",
+    "database":"formn_cli_test_db",
+    "poolSize":50
+  }
+]

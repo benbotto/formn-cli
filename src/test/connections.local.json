@@ -1,0 +1,10 @@
+[
+  {
+    "host":"127.0.0.1",
+    "user":"root",
+    "port":3307,
+    "password":"formn-password",
+    "database":"formn_cli_test_db",
+    "poolSize":50
+  }
+]
