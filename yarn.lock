@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@types/mysql2@types/mysql2":
+"@types/mysql2@github:types/mysql2":
   version "1.0.0"
   resolved "https://codeload.github.com/types/mysql2/tar.gz/e2be194d8db7a1a64612e5f645d5cad8223328ab"
   dependencies:
@@ -145,9 +145,9 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-formn@~5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/formn/-/formn-5.0.0.tgz#3c77e4876684018f725a4adfdc2f5f1ccd06d264"
+formn@5.x.x:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/formn/-/formn-5.4.0.tgz#253a78ed0214b4fea71676c2032c45b68110aa01"
   dependencies:
     "@types/mysql2" types/mysql2
     "@types/pluralize" "~0.0.29"
