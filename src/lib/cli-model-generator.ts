@@ -9,8 +9,8 @@ export class CLIModelGenerator {
    */
   async generateModels(
     connFile: string,
-    entityDir: string,
-    flavor: string): Promise<void> {
+    flavor: string,
+    entityDir: string): Promise<void> {
 
     const connFileReader = new ConnectionsFileReader();
     const connOpts       = await connFileReader
