@@ -2,7 +2,7 @@
 
 import * as yargs from 'yargs';
 
-import { CLIModelGenerator } from '../lib/';
+import { CLIModelGenerator, CLIMigrator } from '../lib/';
 
 const argv = yargs
   .strict()
@@ -71,7 +71,7 @@ if (command === 'generate' || command === 'g') {
   const modelGen = new CLIModelGenerator();
 
   modelGen
-    .generateModels(connFile, entDir, flavor)
+    .generateModels(connFile, flavor, entDir)
     .catch(err => {
       console.error('Error generating models.');
       console.error(err);
@@ -80,15 +80,18 @@ if (command === 'generate' || command === 'g') {
 else if (command === 'migrate' || command === 'm') {
   const migCommand = argv._[1];
   const migDir     = argv.m as string;
-
-  console.log(`Using migrations directory "${migDir}"`);
+  const migrator   = new CLIMigrator(connFile, flavor, migDir);
 
   switch (migCommand) {
     case 'create':
-      const migName = argv.migrationName;
+      const migName = argv.migrationName as string;
 
       console.log(`Creating migration: "${migName}"`);
+      migrator
+        .create(migName)
+        .catch(console.error);
       break;
+
     case 'up':
       console.log(`Migrating up.`);
       break;
