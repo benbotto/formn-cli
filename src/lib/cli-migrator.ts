@@ -75,8 +75,7 @@ export class CLIMigrator {
       await this.migrators[0].createMigration(migName);
     }
     finally {
-      this.end();
+      await this.end();
     }
-    await this.end();
   }
 }
