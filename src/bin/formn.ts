@@ -104,6 +104,11 @@ else if (command === 'migrate' || command === 'm') {
       break;
     case 'down':
       console.log(`Migrating down.`);
+
+      migrator
+        .down()
+        .catch(console.error);
+
       break;
     case 'run':
       const migScript = argv.migrationScript;

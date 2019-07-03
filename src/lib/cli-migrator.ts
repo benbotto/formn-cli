@@ -95,4 +95,19 @@ export class CLIMigrator {
       await this.end();
     }
   }
+
+  /**
+   * Migrate the database down (bring down the last migration).
+   */
+  async down(): Promise<any> {
+    await this.initialize();
+
+    try {
+      for (let migrator of this.migrators)
+        await migrator.down();
+    }
+    finally {
+      await this.end();
+    }
+  }
 }
