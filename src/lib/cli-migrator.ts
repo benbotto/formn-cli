@@ -1,5 +1,6 @@
 import {
-  Migrator, MySQLMigrator, DataContext, MySQLDataContext, ConnectionsFileReader
+  Migrator, MySQLMigrator, DataContext, MySQLDataContext,
+  ConnectionsFileReader, FormnMigration
 } from 'formn';
 
 /**
@@ -71,8 +72,24 @@ export class CLIMigrator {
    */
   async create(migName: string): Promise<void> {
     await this.initialize();
+
     try {
-      await this.migrators[0].createMigration(migName);
+      await this.migrators[0].create(migName);
+    }
+    finally {
+      await this.end();
+    }
+  }
+
+  /**
+   * Migrate the database up.
+   */
+  async up(): Promise<any> {
+    await this.initialize();
+
+    try {
+      for (let migrator of this.migrators)
+        await migrator.up();
     }
     finally {
       await this.end();
