@@ -111,9 +111,14 @@ else if (command === 'migrate' || command === 'm') {
 
       break;
     case 'run':
-      const migScript = argv.migrationScript;
+      const migScript = argv.migrationScript as string;
 
       console.log(`Running migration script: "${migScript}"`);
+
+      migrator
+        .run(migScript)
+        .catch(console.error);
+
       break;
   }
 }

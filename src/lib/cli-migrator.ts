@@ -110,4 +110,19 @@ export class CLIMigrator {
       await this.end();
     }
   }
+
+  /**
+   * Run a migration script.
+   */
+  async run(migScript: string): Promise<any> {
+    await this.initialize();
+
+    try {
+      for (let migrator of this.migrators)
+        await migrator.run(migScript);
+    }
+    finally {
+      await this.end();
+    }
+  }
 }
