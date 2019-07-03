@@ -87,13 +87,20 @@ else if (command === 'migrate' || command === 'm') {
       const migName = argv.migrationName as string;
 
       console.log(`Creating migration: "${migName}"`);
+
       migrator
         .create(migName)
         .catch(console.error);
+
       break;
 
     case 'up':
       console.log(`Migrating up.`);
+
+      migrator
+        .up()
+        .catch(console.error);
+
       break;
     case 'down':
       console.log(`Migrating down.`);
