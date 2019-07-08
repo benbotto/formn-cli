@@ -1,6 +1,6 @@
 {
   "name": "formn-cli",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Command-line interface for formn.",
   "main": "dist/bin/formn.js",
   "types": "dist/index.d.ts",
