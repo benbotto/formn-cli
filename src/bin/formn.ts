@@ -72,10 +72,7 @@ if (command === 'generate' || command === 'g') {
 
   modelGen
     .generateModels(connFile, flavor, entDir)
-    .catch(err => {
-      console.error('Error generating models.');
-      console.error(err);
-    });
+    .catch(handleError);
 }
 else if (command === 'migrate' || command === 'm') {
   const migCommand = argv._[1];
@@ -90,7 +87,7 @@ else if (command === 'migrate' || command === 'm') {
 
       migrator
         .create(migName)
-        .catch(console.error);
+        .catch(handleError);
 
       break;
 
@@ -99,7 +96,7 @@ else if (command === 'migrate' || command === 'm') {
 
       migrator
         .up()
-        .catch(console.error);
+        .catch(handleError);
 
       break;
     case 'down':
@@ -107,7 +104,7 @@ else if (command === 'migrate' || command === 'm') {
 
       migrator
         .down()
-        .catch(console.error);
+        .catch(handleError);
 
       break;
     case 'run':
@@ -117,9 +114,13 @@ else if (command === 'migrate' || command === 'm') {
 
       migrator
         .run(migScript)
-        .catch(console.error);
+        .catch(handleError);
 
       break;
   }
 }
 
+function handleError(err: Error) {
+  console.error(err);
+  process.exit(1);
+}
